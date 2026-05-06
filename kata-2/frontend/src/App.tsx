@@ -21,19 +21,19 @@ function Dashboard() {
   const [filter, setFilter] = useState<'All' | 'Pending' | 'Completed'>('All');
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchTasks = async () => {
-    setIsLoading(true);
-    try {
-      const response = await api.get('/tasks', { params: { status: filter } });
-      setTasks(response.data);
-    } catch (error) {
-      console.error('Error fetching tasks:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchTasks = async () => {
+      setIsLoading(true);
+      try {
+        const response = await api.get('/tasks', { params: { status: filter } });
+        setTasks(response.data);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     fetchTasks();
   }, [filter]);
 
@@ -43,7 +43,8 @@ function Dashboard() {
     try {
       await api.post('/tasks', { title: newTaskTitle });
       setNewTaskTitle('');
-      fetchTasks();
+      const response = await api.get('/tasks', { params: { status: filter } });
+      setTasks(response.data);
     } catch (error) {
       console.error('Error creating task:', error);
     }
@@ -53,7 +54,8 @@ function Dashboard() {
     const newStatus = task.Status === 'Pending' ? 'Completed' : 'Pending';
     try {
       await api.patch(`/tasks/${task.Id}`, { status: newStatus });
-      fetchTasks();
+      const response = await api.get('/tasks', { params: { status: filter } });
+      setTasks(response.data);
     } catch (error) {
       console.error('Error updating task:', error);
     }
@@ -62,7 +64,8 @@ function Dashboard() {
   const handleDeleteTask = async (taskId: number) => {
     try {
       await api.delete(`/tasks/${taskId}`);
-      fetchTasks();
+      const response = await api.get('/tasks', { params: { status: filter } });
+      setTasks(response.data);
     } catch (error) {
       console.error('Error deleting task:', error);
     }
@@ -226,7 +229,7 @@ function Dashboard() {
                         <input 
                           type="text" 
                           className="w-full bg-white border-slate-300 border rounded-xl px-4 py-3 placeholder:text-slate-400 focus:ring-2 focus:outline-none transition-shadow text-slate-800 shadow-sm"
-                          style={{ '--tw-ring-color': UNIMED_GREEN } as any}
+                          style={{ '--tw-ring-color': UNIMED_GREEN } as React.CSSProperties}
                           placeholder="Ex: Revisar arquitetura do BD..."
                           value={newTaskTitle}
                           onChange={(e) => setNewTaskTitle(e.target.value)}

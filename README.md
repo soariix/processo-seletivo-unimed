@@ -6,14 +6,14 @@
 
 ## Stack Utilizada e Justificativa
 
-*   **Backend / APIs:** C# / .NET 8
+*   **Backend / APIs:** Node.js + TypeScript
 *   **Frontend:** React + TypeScript (Vite)
 *   **Scripts / Dados:** Python
 
 **Justificativa:** 
-A escolha desta stack reflete não apenas o alinhamento com o ecossistema atual da Unimed Caruaru, mas também a seleção das ferramentas mais adequadas, performáticas e maduras para cada contexto do ciclo de desenvolvimento do software:
+A escolha desta stack reflete não apenas o alinhamento com as melhores práticas modernas, mas também a seleção das ferramentas mais adequadas, performáticas e maduras para cada contexto do ciclo de desenvolvimento do software:
 
-*   **C# / .NET 8 (Backend):** Excelente performance, forte tipagem e ecossistema maduro para APIs REST corporativas. Permite fácil aplicação de conceitos de Clean Architecture, Injeção de Dependência nativa e princípios SOLID.
+*   **Node.js + TypeScript (Backend):** Oferece performance, forte tipagem e ecossistema robusto para APIs REST. TypeScript proporciona segurança de tipos em tempo de compilação e facilita a manutenção de código.
 *   **React + TypeScript (Frontend):** Proporciona componentização escalável e testável. A segurança de tipos do TypeScript atua como uma camada primária de testes, prevenindo erros em tempo de execução e melhorando drasticamente a Experiência do Desenvolvedor (DX).
 *   **Python (Engenharia de Dados e Scripts):** É a linguagem padrão-ouro para processamento de dados. Seu vasto ecossistema (como `pandas` e funções utilitárias) permite transformações de dados idempotentes e extremamente eficientes, focando na clareza do algoritmo.
 
@@ -49,5 +49,5 @@ A escolha desta stack reflete não apenas o alinhamento com o ecossistema atual 
 ## Comentários Livres (O que faria com mais tempo)
 
 *   **Cobertura de Testes:** Ampliaria a cobertura de testes no frontend, implementando Jest e React Testing Library no Kata 2, bem como testes E2E com Cypress ou Playwright.
-*   **Aprofundamento no Backend:** Desenvolveria o restante do backend do Kata 2 em C# .NET conforme idealizado, utilizando Entity Framework e garantindo uma integração nativa com o ecossistema corporativo da empresa.
+*   **Aprofundamento no Backend:** Expandiria as funcionalidades do backend do Kata 2 em Node.js/TypeScript, implementando melhor estruturação de camadas, autenticação robusta e integração com banco de dados.
 *   **Dockerização:** Criaria os containers para todas as aplicações via Docker e o orquestrador `docker-compose.yml`, simplificando ainda mais o setup dos avaliadores.

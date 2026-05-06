@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__line__)) if '__line__' in globals()
 DATA_DIR = os.path.join(BASE_DIR, 'dados')
 
 def normalize_text(text):
-    """Remove acentos, espaços extras e converte para caixa alta"""
+    #Remove acentos, espaços extras e converte para caixa alta
     if pd.isna(text):
         return text
     text = str(text).strip().upper()
@@ -113,7 +113,7 @@ def run_pipeline():
         print(f"\n Percentual de Entregas: {no_prazo/tot_entregas*100:.1f}% no Prazo | {com_atraso/tot_entregas*100:.1f}% Atrasadas")
     
     print("\n Top 3 Cidades com maior volume de pedidos:")
-    print(df_final['cidade_normalizada'].value_contents().head(3).to_string() if hasattr(df_final['cidade_normalizada'], 'value_counts') else df_final['cidade_normalizada'].value_counts().head(3).to_string())
+    print(df_final['cidade_normalizada'].value_counts().head(3).to_string())
     
     pedidos_atrasados = df_final[df_final['atraso_dias'] > 0]
     if not pedidos_atrasados.empty:
